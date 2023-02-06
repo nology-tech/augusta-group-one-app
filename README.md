@@ -4,7 +4,7 @@
 
 - [Constantin]()
 - [Huma]()
-- [Jay]()
+- [Jay](https://github.com/JayBuckby)
 - [Oliver]()
 - [Walter]()
 
