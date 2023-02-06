@@ -2,10 +2,10 @@
 
 ## Contributors
 
-- [Constantin]()
-- [Huma Shaikh]()
-- [Jay]()
+- [Constantin](https://github.com/Constantin-Coica)
+- [Huma](https://github.com/humashaikhc)
+- [Jay](https://github.com/JayBuckby)
 - [Oliver]()
 - [Walter]()
 
-- Coach : [harlie](https://github.com/Charlie-robin)
+- Coach : [Charlie](https://github.com/Charlie-robin)
