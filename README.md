@@ -2,10 +2,9 @@
 
 ## Contributors
 
-- [Constantin]()
+- [Constantin](https://github.com/Constantin-Coica)
 - [Huma]()
-- [Jay]()
 - [Oliver](https://github.com/ovt12)
+- [Jay](https://github.com/JayBuckby)
 - [Walter]()
-
-- Coach : [harlie](https://github.com/Charlie-robin)
+- Coach : [Charlie](https://github.com/Charlie-robin)
