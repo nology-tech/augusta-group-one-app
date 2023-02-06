@@ -4,8 +4,7 @@
 
 - [Constantin](https://github.com/Constantin-Coica)
 - [Huma]()
+- [Oliver](https://github.com/ovt12)
 - [Jay](https://github.com/JayBuckby)
-- [Oliver]()
 - [Walter]()
-
 - Coach : [Charlie](https://github.com/Charlie-robin)
