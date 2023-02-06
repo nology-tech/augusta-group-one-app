@@ -4,8 +4,8 @@
 
 - [Constantin]()
 - [Huma]()
-- [Jay]()
+- [Jay](https://github.com/JayBuckby)
 - [Oliver]()
 - [Walter]()
 
-- Coach : [harlie](https://github.com/Charlie-robin)
+- Coach : [Charlie](https://github.com/Charlie-robin)
