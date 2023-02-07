@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>snake-canvas</title>
+
+		<link rel="stylesheet" href="./styles/main.css" />
+	</head>
+	<body class="container">
+		<h1 class="header">Snake</h1>
+
+		<section class="display">
+			<h2 class="display__name">
+				Name: <span id="userName" class="display__name--user"></span>
+			</h2>
+
+			<h2 class="display__heading">
+				Score: <span id="score" class="display__heading--score">0</span>
+			</h2>
+		</section>
+
+		<main class="main">
+			<canvas id="canvas" class="canvas" width="400" height="400"></canvas>
+
+			<section id="scoreBoard" class="scoreBoard"></section>
+		</main>
+
+		<section id="nameArea" class="nameArea">
+			<h1 class="nameArea__heading">Snake</h1>
+			<input
+				id="name"
+				class="nameArea__input"
+				type="text"
+				placeholder="Enter Your Name..."
+			/>
+
+			<button id="nameBtn" class="nameArea__button">Ready</button>
+		</section>
+
+		<section id="lose" class="loseScreen hide">
+			<h2 id="loseMsg" class="loseScreen__heading"></h2>
+			<h3 class="loseScreen__score">Score: <span id="finalScore">0</span></h3>
+			<button class="loseScreen__button" id="startOverBtn">Start Over</button>
+		</section>
+
+		<script src="./scripts/main.js" type="module"></script>
+	</body>
+</html>
