@@ -1,0 +1,209 @@
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-image: url("../assets/images/sunrise-minecraft.jpg");
+  background-size: auto; /* <------ */
+  background-repeat: no-repeat;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.hide {
+  display: none !important;
+}
+
+@media screen and (max-width: 1000px) {
+  .container {
+    max-width: 1000px;
+  }
+}
+.display {
+  width: 100vw;
+  margin: 20px 0;
+  display: flex;
+  justify-content: space-between;
+  font-family: "Press Start 2P", cursive;
+  font-size: 0.8rem;
+  color: #6ded8a;
+  padding: 0 1rem;
+}
+
+@media screen and (min-width: 799px) {
+  .display {
+    width: 600px;
+  }
+}
+.canvas {
+  border: solid 2px #ed3833;
+}
+
+.main {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1rem;
+}
+
+@media screen and (min-width: 799px) {
+  .main {
+    flex-direction: row;
+  }
+}
+.header {
+  font-size: 4rem;
+  font-family: "Press Start 2P", cursive;
+  color: #6ded8a;
+  text-align: center;
+  margin: 2rem 0;
+}
+
+.scoreBoard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  padding: 1rem;
+  font-family: "Press Start 2P", cursive;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+.scoreBoard__header {
+  font-size: 1.4rem;
+  color: #6ded8a;
+  margin-top: 1rem;
+}
+.scoreBoard__item {
+  list-style: none;
+  color: white;
+  letter-spacing: 2px;
+}
+.scoreBoard__item:nth-child(2n+1) {
+  color: #6ded8a;
+}
+.scoreBoard__item--hide {
+  display: none;
+}
+
+@media screen and (min-width: 799px) {
+  .scoreBoard {
+    justify-content: space-evenly;
+  }
+  .scoreBoard__header {
+    font-size: 2rem;
+  }
+  .scoreBoard__item--hide {
+    display: inherit;
+  }
+}
+.loseScreen {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+.loseScreen__heading {
+  font-family: "Press Start 2P", cursive;
+  color: #6ded8a;
+  font-size: 1.4rem;
+  letter-spacing: 10px;
+}
+.loseScreen__score {
+  font-family: "Press Start 2P", cursive;
+  color: #6ded8a;
+  margin: 1rem 0;
+}
+.loseScreen__button {
+  font-family: "Press Start 2P", cursive;
+  padding: 0.8rem 2rem;
+  background-color: transparent;
+  border: solid 1px #6ded8a;
+  color: #6ded8a;
+}
+
+.nameArea {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #232323;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.nameArea__heading {
+  font-family: "Press Start 2P", cursive;
+  font-size: 4rem;
+  color: #6ded8a;
+  letter-spacing: 12px;
+  margin-bottom: 200px;
+}
+.nameArea__input {
+  padding: 0.4rem 1rem;
+  border: none;
+  border-bottom: solid 2px #6ded8a;
+  background-color: transparent;
+  font-family: "Press Start 2P", cursive;
+  color: #6ded8a;
+  letter-spacing: 4px;
+}
+.nameArea__input:focus {
+  outline: none;
+}
+.nameArea__color {
+  display: flex;
+  align-items: center;
+  color: #6ded8a;
+  font-family: "Press Start 2P", cursive;
+}
+.nameArea__color--select {
+  border: none;
+  outline: none;
+  background-color: transparent;
+  color: #6ded8a;
+  padding: 1rem;
+  font-family: "Press Start 2P", cursive;
+}
+.nameArea__option {
+  background: green;
+  padding: 1rem;
+}
+.nameArea__button {
+  font-family: "Press Start 2P", cursive;
+  background-color: transparent;
+  letter-spacing: 12px;
+  border: none;
+  padding: 1rem;
+  border-radius: 25px;
+  color: #6ded8a;
+  border: solid 1px #6ded8a;
+  cursor: pointer;
+  transition: background-color ease 800ms;
+  margin-top: 20px;
+}
+.nameArea__button:hover {
+  background-color: rgba(109, 237, 138, 0.6);
+  color: white;
+}
+
+.theme {
+  position: absolute;
+  top: 0;
+  right: 0;
+}/*# sourceMappingURL=main.css.map */
