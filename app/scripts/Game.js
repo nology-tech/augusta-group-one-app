@@ -104,24 +104,23 @@ export class Game {
       .slice(0, 10);
 
     if (
-      this.score < sortedScores[sortedScores.length - 1].score &&
-      sortedScores.length > 0
+      sortedScores.length > 0 &&
+      this.score < sortedScores[sortedScores.length - 1].score
     ) {
       loseMsg.innerHTML = "You didn't make the cut this time.";
       return;
     }
 
     if (
-      this.score > sortedScores[sortedScores.length - 1].score &&
-      sortedScores.length > 0
+      sortedScores.length > 0 &&
+      this.score > sortedScores[sortedScores.length - 1].score
     ) {
       loseMsg.innerHTML = "You made into the top 10! That's awesome!";
     }
 
-    if (this.score > sortedScores[0].score && sortedScores.length > 0) {
+    if (sortedScores.length > 0 && this.score > sortedScores[0].score) {
       loseMsg.innerHTML = "You reached the top of the leader board.";
     }
-
     return fetch(`${URL}`, {
       method: "post",
       headers: {
