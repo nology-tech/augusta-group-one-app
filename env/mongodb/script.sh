@@ -1,3 +1,5 @@
+#!/bin/bash
+
 echo ---------- Import GPG Key - MongoDB ----------
 wget -qO - https://www.mongodb.org/static/pgp/server-6.0.asc | sudo apt-key add -
 echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu focal/mongodb-org/6.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-6.0.list
@@ -9,13 +11,14 @@ echo -------------- Install Python ------------------
 sudo apt-get install software-properties-common -y
 
 echo -------------- Download node v16 ---------------
-curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
+curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash -
 
 echo ------------------ Install node ----------------
 sudo apt-get install nodejs -y
 
 echo ------------------ Install npm -----------------
 sudo apt-get install npm -y
+npm install -g npm -y
 
 echo ---------- Install MongoDB ----------
 sudo apt install mongodb-org -y
@@ -39,8 +42,10 @@ echo ---------- Get Host IP ----------
 sudo hostname -I > /home/vagrant/global/hostname.txt
 
 echo ---------- Install Dependencies ------------
-cd /home/vagrant/db
-npm install
+cd /home/vagrant/api
+pwd
+sudo npm install -g npm
+sudo npm install
 
 echo ---------- Start API ------------
 # node server.js

@@ -1,56 +1,51 @@
-# # Vmware
+
+### M1 Apple Chip
 Vagrant.configure("2") do |config|
   config.vm.synced_folder "global/", "/home/vagrant/global"
 
-    # Provisiing MongoDB
-    config.vm.define "mongodb" do | mongodb |
-      mongodb.vm.box = "starboard/ubuntu-arm64-20.04.5"
-      mongodb.vm.synced_folder "env/mongodb/", "/home/vagrant/env/mongodb"
-      
-      mongodb.vm.provider "vmware_desktop" do |v|
-          v.gui = true
-          v.vmx["ethernet0.virtualdev"] = "vmxnet3"
-      end
-  
-      mongodb.vm.provision "shell", inline: <<-SHELL
-        systemctl disable apt-daily.service
-        systemctl disable apt-daily.timer
-        sudo apt remove unattended-upgrades -y
-      SHELL
-      mongodb.vm.provision "shell", path: "env/mongodb/script.sh"
+  # Scores API
+  config.vm.define "mongodb" do | mongodb |
+    mongodb.vm.box = "starboard/ubuntu-arm64-20.04.5"
+    mongodb.vm.synced_folder "env/mongodb", "/home/vagrant/env/mongodb"
+    mongodb.vm.synced_folder "api/", "/home/vagrant/api"
+
+    mongodb.vm.provider "vmware_desktop" do |v|
+      v.gui = true
+      v.vmx["ethernet0.virtualdev"] = "vmxnet3"
     end
 
-
-
-
-  # NODE APP CONFIG
-  config.vm.define "jsapp" do |node|
-  node.vm.box = "starboard/ubuntu-arm64-20.04.5"
-  node.vm.box_version = "20221120.20.40.0"
-  node.vm.box_download_insecure = true
-  node.vm.synced_folder "app/", "/home/vagrant/app/"
-  node.vm.synced_folder "env/", "/home/vagrant/env/"
-  
-
-  # node.vm.hostname = "nology.training"
-  # node.hostsupdater.aliases = {
-  #     '172.16.251.130' => "nology.training",
-  # }
-
-  node.vm.provider "vmware_desktop" do |v|
-      v.ssh_info_public = true
-      v.gui = true
-      v.linked_clone = false
-      v.vmx["ethernet0.virtualdev"] = "vmxnet3"
+    mongodb.vm.provision "shell", inline: <<-SHELL
+      systemctl disable apt-daily.service
+      systemctl disable apt-daily.timer
+      sudo apt remove unattended-upgrades -y
+    SHELL
+    mongodb.vm.provision "shell", path: "env/mongodb/script.sh"
   end
 
-  node.vm.provision "shell", inline: <<-SHELL
-    systemctl disable apt-daily.service
-    systemctl disable apt-daily.timer
-    sudo apt remove unattended-upgrades -y
-  SHELL
-node.vm.provision "shell", path: "env/jsapp/script.sh"
-node.vm.provision "shell", inline: "echo `export DB_PATH=192.168.56.20` >> /etc/profile.d/myvars.sh", run: "always"
-end
+  # Snake Game
+  config.vm.define "snake" do | snake |
+    snake.vm.box = "starboard/ubuntu-arm64-20.04.5"
+    config.vm.synced_folder "app/", "/home/vagrant/app"
+    config.vm.synced_folder "env/jsapp", "/home/vagrant/env/jsapp"
 
+    snake.vm.box_version = "20221120.20.40.0"
+    snake.vm.box_download_insecure = true
+
+#     # snake.vm.hostname = "nology.training"
+#     # snake.hostsupdater.aliases = {
+#     #   '192.168.63.138' => "nology.training",
+#     # }
+
+    snake.vm.provider "vmware_desktop" do |v|
+        v.gui = true
+        v.vmx["ethernet0.virtualdev"] = "vmxnet3"
+    end
+
+    snake.vm.provision "shell", inline: <<-SHELL
+      systemctl disable apt-daily.service
+      systemctl disable apt-daily.timer
+      sudo apt remove unattended-upgrades -y
+    SHELL
+    snake.vm.provision "shell", path: "env/jsapp/script.sh"
+  end
 end
