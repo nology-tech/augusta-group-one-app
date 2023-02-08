@@ -4,7 +4,7 @@ const loseEl = document.getElementById("lose");
 const finalScore = document.getElementById("finalScore");
 const loseMsg = document.getElementById("loseMsg");
 
-const URL = "http://192.168.56.20:5550/api/scores";
+const URL = "IP_ADDRESS";
 
 export class Game {
   constructor(width, height, name) {

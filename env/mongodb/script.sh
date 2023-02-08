@@ -42,5 +42,9 @@ cd /home/vagrant/api
 npm install -g npm
 npm install --no-bin-links
 
+echo --------- Setting Environment Variables -------
+export DB_URI="mongodb://127.0.0.1:27017/snake"
+echo $DB_URI
+
 echo ---------- Start API ------------
 node server.js

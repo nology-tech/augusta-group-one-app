@@ -49,5 +49,11 @@ echo ---------- Copy Game ----------
 sudo cp -r app/* /var/www/snake.game/html/
 
 echo ---------- Save DB IP Address  ----------
-export DB_IP="mongodb://192.168.56.20/api/scores"
+export DB_IP="http://192.168.56.20:5550/api/scores"
+echo $DB_IP
+
+echo ---------- Update Game.js with DB IP Address  ----------
+sudo sed -i "s/IP_ADDRESS/$(echo $DB_IP | sed 's#/#\\/#g')/" /var/www/snake.game/html/scripts/Game.js
+
+
 
