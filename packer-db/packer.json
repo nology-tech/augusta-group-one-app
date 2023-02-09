@@ -29,17 +29,22 @@
   ],
   "provisioners": [
     {
-      "type": "file",
-      "source": "../app",
-      "destination": "/home/ubuntu/app"
-    },
-    {
       "type": "shell",
       "script": "../base.sh"
     },
     {
+      "type": "file",
+      "source": "../api",
+      "destination": "/home/ubuntu/api"
+    },
+    {
+      "type": "file",
+      "source": "../env/mongodb",
+      "destination": "/home/ubuntu/env"
+    },
+    {
       "type": "ansible-local",
-      "playbook_file": "playbook.yml"
+      "playbook_file": "./playbook.yml"
     }
   ]
 }
