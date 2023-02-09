@@ -12,12 +12,6 @@ const app = express();
 
 app.use(express.json());
 
-// M1 Version
-// const corsOptions = {
-//   origin: "https://snake.adamsackfield.uk",
-//   optionsSuccessStatus: 200,
-// };
-
 app.use(cors());
 
 app.use("/api", routes);
