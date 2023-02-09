@@ -3,7 +3,6 @@ const Score = require("../models/score.model");
 const getScores = async (req, res, next) => {
   try {
     const scores = await Score.find();
-
     res.header("Access-Control-Allow-Origin", "*").status(200).send({ scores });
   } catch (err) {
     console.log(err);

@@ -1,9 +1,8 @@
 #!/bin/bash
-
-# Intel Version
+# M1 Version
 echo ---------- Import GPG Key - MongoDB ----------
-wget -qO - https://www.mongodb.org/static/pgp/server-4.4.asc | sudo apt-key add -
-echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu bionic/mongodb-org/4.4 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-4.4.list
+wget -qO - https://www.mongodb.org/static/pgp/server-6.0.asc | sudo apt-key add -
+echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu focal/mongodb-org/6.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-6.0.list
 
 echo ---------- Update the System ----------
 sudo apt-get update -y
@@ -19,6 +18,7 @@ sudo apt-get install nodejs -y
 
 echo ------------------ Install npm -----------------
 sudo apt-get install npm -y
+npm install -g npm -y
 
 echo ---------- Install MongoDB ----------
 sudo apt install mongodb-org -y
@@ -38,13 +38,19 @@ sudo systemctl restart mongod.service
 echo ---------- Show Status ----------
 sudo systemctl status mongod.service
 
-echo ---------- Install Dependencies ------------
-cd /home/vagrant/api
-npm install -g npm
-npm install --no-bin-links
+echo ---------- Get Host IP ----------
+sudo hostname -I > /home/vagrant/global/hostname.txt
 
 echo --------- Setting Environment Variables -------
-export DB_URI="mongodb://127.0.0.1:27017/snake"
-echo $DB_URI
+touch .bash_aliases
+echo 'export DB_URI="mongodb://127.0.0.1:27017/snake"' > .bash_aliases
+cat .bash_aliases
+
+echo ---------- Install Dependencies ------------
+cd /home/vagrant/api
+pwd
+sudo npm install -g npm
+sudo npm install
+
 echo ---------- Start API ------------
-node server.js
+# node server.js

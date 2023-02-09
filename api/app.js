@@ -12,10 +12,11 @@ const app = express();
 
 app.use(express.json());
 
-const corsOptions = {
-  origin: "https://snake.adamsackfield.uk",
-  optionsSuccessStatus: 200,
-};
+// M1 Version
+// const corsOptions = {
+//   origin: "https://snake.adamsackfield.uk",
+//   optionsSuccessStatus: 200,
+// };
 
 app.use(cors());
 
