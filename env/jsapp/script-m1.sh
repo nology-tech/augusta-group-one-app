@@ -1,4 +1,4 @@
-# M1 Version
+#!/bin/bash
 
 echo -------------- Update source list --------------
 sudo apt-get update -y

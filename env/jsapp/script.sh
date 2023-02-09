@@ -1,8 +1,5 @@
 #!/bin/bash
 
-Intel Version
-!/bin/bash
-
 echo ---------- Update the System ----------
 sudo apt-get update -y
 
