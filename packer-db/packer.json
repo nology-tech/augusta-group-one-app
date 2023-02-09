@@ -24,27 +24,27 @@
       },
       "instance_type": "t2.micro",
       "ssh_username": "ubuntu",
-      "ami_name": "augusta-image-group1-{{timestamp}}"
+      "ami_name": "augusta-image-group1-DATABASE-{{timestamp}}"
     }
   ],
   "provisioners": [
     {
+      "type": "shell",
+      "script": "../base.sh"
+    },
+    {
       "type": "file",
-      "source": "env",
+      "source": "../api",
+      "destination": "/home/ubuntu/api"
+    },
+    {
+      "type": "file",
+      "source": "../env/mongodb",
       "destination": "/home/ubuntu/env"
     },
     {
-      "type": "file",
-      "source": "env",
-      "destination": "/home/ubuntu/app"
-    },
-    {
-      "type": "shell",
-      "script": "./base.sh"
-    },
-    {
       "type": "ansible-local",
-      "playbook_file": "playbook.yml"
+      "playbook_file": "./playbook.yml"
     }
   ]
 }
