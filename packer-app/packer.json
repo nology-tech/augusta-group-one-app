@@ -30,7 +30,7 @@
   "provisioners": [
     {
       "type": "shell",
-      "script": "../base.sh"
+      "script": "/env/bash-script/base.sh"
     },
     {
       "type": "file",
