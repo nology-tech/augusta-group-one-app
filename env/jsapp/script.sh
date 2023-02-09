@@ -54,6 +54,3 @@ echo $DB_IP
 
 echo ---------- Update Game.js with DB IP Address  ----------
 sudo sed -i "s/IP_ADDRESS/$(echo $DB_IP | sed 's#/#\\/#g')/" /var/www/snake.game/html/scripts/Game.js
-
-
-

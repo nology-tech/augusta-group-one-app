@@ -1,3 +1,4 @@
+// Intel Version
 const dotenv = require("dotenv");
 dotenv.config();
 
@@ -9,7 +10,7 @@ const connectDB = () => {
     .then(() => {
       console.log("connected");
     })
-    .catch(err => console.error(err));
+    .catch((err) => console.error(err));
 };
 
 module.exports = connectDB;

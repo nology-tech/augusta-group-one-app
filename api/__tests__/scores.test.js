@@ -1,15 +1,15 @@
-const mongoose = require('mongoose');
-const request = require('supertest');
-const app = require('../app');
+const mongoose = require("mongoose");
+const request = require("supertest");
+const app = require("../app");
 
-const Score = require('../models/score.model');
-const scoreData = require('../db/data/scoreData');
+const Score = require("../../app/models/score.model");
+const scoreData = require("../db/data/scoreData");
 
-describe("Testing Api", ()=>{
-	it('should return a status of 200 and an array containing 1 score', () => {
-		expect(true).toBeTruthy()
-	})
-})
+describe("Testing Api", () => {
+  it("should return a status of 200 and an array containing 1 score", () => {
+    expect(true).toBeTruthy();
+  });
+});
 
 // beforeEach((done) => {
 // 	mongoose.connect('mongodb://127.0.0.1:27017/snake_test', () => {
