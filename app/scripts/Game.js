@@ -99,6 +99,7 @@ export class Game {
     finalScore.innerHTML = this.getScore();
     const data = localStorage.getItem("scores");
     const highScores = JSON.parse(data);
+
     const sortedScores = highScores
       .sort((a, b) => b.score - a.score)
       .slice(0, 10);
@@ -121,6 +122,7 @@ export class Game {
     if (sortedScores.length > 0 && this.score > sortedScores[0].score) {
       loseMsg.innerHTML = "You reached the top of the leader board.";
     }
+
     return fetch(`${URL}`, {
       method: "post",
       headers: {
