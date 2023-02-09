@@ -5,94 +5,66 @@
   become_user: root
   become_method: sudo
   tasks:
-  - name: "apt-get update"
-    apt:
-      update_cache: true
-      cache_valid_time: 3600
-      force_apt_get: true
-  - name: "apt-get upgrade"
-    apt:
-      upgrade: yes
-      cache_valid_time: 3600
-  - name: "intall software-properties-common"
-    become: yes
-    apt:
-      name: software-properties-common
-      state: present
-  - name: "add nodejs apt key"
-    apt_key:
-      url: "https://deb.nodesource.com/gpgkey/nodesource.gpg.key"
-      state: present
-  - name: "download node"
-    apt_repository:
-      repo: deb https://deb.nodesource.com/node_16.x bionic main
-      update_cache: yes
-  - name: "install node.js"
-    apt:
-      update_cache: yes
-      name: nodejs
-      state: present
-  - name: "add MONGODB apt key"
-    apt_key:
-      url: "https://www.mongodb.org/static/pgp/server-4.4.asc"
-      state: present
-  - name: "download MONGODB"
-    apt_repository:
-      repo: deb https://repo.mongodb.org/apt/ubuntu bionic/mongodb-org/4.4 multiverse
-      update_cache: yes
-  - name: "install MONGODB"
-    apt:
-      name: mongodb-org
-      state: present
-      update_cache: yes
-  # - name: "start MONGODB"
-  #   shell: sudo systemctl start mongod.service
-  # - name: "enable MONGODB"
-  #   shell: sudo systemctl enable mongod.service
-  - name: Start Mongo Service
-    service:
-      name: mongod
-      state: started
-  - name: "Enable MONGODB"
-    service: 
-      name: mongod
-      enabled: yes
-  - name: Copy Mongo Config
-    copy:
-      src: /home/ubuntu/env/mongod.conf
-      dest: /etc/mongod.conf
-  - name: Restart Mongo Service
-    service:
-      name: mongod
-      state: restarted
-    become: true
-  - name: Change directory to /home/ubuntu/api
-    command: cd /home/ubuntu/api
-    args:
-      chdir: /home/ubuntu/api
-  - name: Install npm globally
-    command: npm install -g npm
-  - name: Install npm packages without binary links
-    command: npm install --no-bin-links
-  - name: "Copy ID" 
-    shell: export DB_URI="mongodb://127.0.0.1:27017/snake"
-  - name: "START MONGODB" 
-    shell: node server.js
-
-
-  # - name: "Create document root for domain configured in host variable"
-  #   file:
-  #     path: "/var/www/snake.game/html"
-  #     state: directory
-  #     owner: root 
-  #     group: root
-  #     mode: '0755'
-  #     recurse: true
-  # - name: "Copy Snake Game"
-  #   shell: sudo cp -r /home/ubuntu/app/* /var/www/snake.game/html/
-  # - name: "Set up Apache virtualhost"
-  #   template:
-  #     src: /home/ubuntu/env/jsapp-proxy.conf
-  #     dest: /etc/apache2/sites-available/
-  # - name: "Copy ID" 
-  #   shell: export DB_IP="mongodb://192.168.56.20/api/scores"
+    - name: "apt-get update"
+      apt:
+        update_cache: true
+        cache_valid_time: 3600
+        force_apt_get: true
+    - name: "apt-get upgrade"
+      apt:
+        upgrade: yes
+        cache_valid_time: 3600
+    - name: "intall software-properties-common"
+      become: yes
+      apt:
+        name: software-properties-common
+        state: present
+    - name: "add nodejs apt key"
+      apt_key:
+        url: "https://deb.nodesource.com/gpgkey/nodesource.gpg.key"
+        state: present
+    - name: "download node"
+      apt_repository:
+        repo: deb https://deb.nodesource.com/node_16.x bionic main
+        update_cache: yes
+    - name: "install node.js"
+      apt:
+        update_cache: yes
+        name: nodejs
+        state: present
+    - name: "add MONGODB apt key"
+      apt_key:
+        url: "https://www.mongodb.org/static/pgp/server-4.4.asc"
+        state: present
+    - name: "download MONGODB"
+      apt_repository:
+        repo: deb https://repo.mongodb.org/apt/ubuntu bionic/mongodb-org/4.4 multiverse
+        update_cache: yes
+    - name: "install MONGODB"
+      apt:
+        name: mongodb-org
+        state: present
+        update_cache: yes
+    - name: Start Mongo Service
+      service:
+        name: mongod
+        state: started
+    - name: "Enable MONGODB"
+      service:
+        name: mongod
+        enabled: yes
+    - name: Copy Mongo Config
+      copy:
+        src: /home/ubuntu/env/mongod.conf
+        dest: /etc/mongod.conf
+    - name: Restart Mongo Service
+      service:
+        name: mongod
+        state: restarted
+      become: true
+    - name: Install Dependencies and Start DB
+      shell: |
+        npm install -g npm
+        npm install -g forever
+    - name: "Copy ID"
+      shell: export DB_URI="mongodb://127.0.0.1:27017/snake"
