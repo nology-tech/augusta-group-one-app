@@ -9,7 +9,7 @@ Vagrant is configured both for machines with Intel chips and Apple M1 chips. Def
 
 ---
 
-## Jenkins configuration
+## Jenkins configuration (Auto-merge on push)
 
 ### Brief overview
 
@@ -28,6 +28,25 @@ A new Build was defined in the Jenkins server. The link of the repository was ad
 restricted to run in NodeJS. For the source code management, a new credential was created and the private key previously created was used. The Build Triggers were configured so that the main trigger is Github hook trigger for GITScm polling on the specified branch: development.
 On the build section a shell command is executed: moving into the app folder, installing NPM and then running the pre-defined tests.
 Using Post-Build Actions, Git Publisher was added so that the build will only be pushed if it succeded (passing the tests) and then merged into the origin main branch.
+
+## Jenkins configuration (Packer-Ansible)
+
+### Brief overview
+
+In order for automating the AMI creation through jenkins, several files needed to be created: packer-app.json and
+packer-db.json which provide configuration for the Database and App AMI. Moreover, images' necessary tools will be installed through ansible,  meaning 2 additional playbooks have been created that will install the said tools and a script that will install ansible.
+
+### Packer and Ansible files for the Snake-App
+
+A packer-app.json has been created where the configuration for creating the Amazon's AMI has been defined and which (through provisioning) will use the base.sh script to install ansible, move the /app/ and /env/jsapp/ folders in the virtual environment and finally move and trigger the playbook-app.yml ansible playbook to install all the necessary software and make the necessary changes to run the app.
+
+### Packer and Ansible files for the Snake-Database
+
+A packer-db.json has been created where the configuration for creating the Amazon's AMI has been defined and which (through provisioning) will use the base.sh script to install ansible, move the /api/ and /env/mongodb/ folders in the virtual environment and finally move and trigger the playbook-db.yml ansible playbook to install all the necessary software and make the necessary changes to run the app.
+
+### Jenkins configuration for the two Packer builds
+
+Jenkins will have access to the GitHub Repository where it can use the previously created files. Two Jenkins builds have been configured, one for the app and one for the database. The configuration was done by specifying the GitHub repositories URLs, adding the necessary credentials to connect to the Github and AWS and using the Packer Add On, specifying the packers files that are needed to be used (pacer-app.json, packer-db.json).
 
 ---
 
