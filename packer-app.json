@@ -24,18 +24,18 @@
       },
       "instance_type": "t2.micro",
       "ssh_username": "ubuntu",
-      "ami_name": "augusta-image-group1-{{timestamp}}"
+      "ami_name": "augusta-image-group1-APP-{{timestamp}}"
     }
   ],
   "provisioners": [
     {
       "type": "file",
-      "source": "env",
+      "source": "env/jsapp",
       "destination": "/home/ubuntu/env"
     },
     {
       "type": "file",
-      "source": "env",
+      "source": "app",
       "destination": "/home/ubuntu/app"
     },
     {
@@ -44,7 +44,7 @@
     },
     {
       "type": "ansible-local",
-      "playbook_file": "playbook.yml"
+      "playbook_file": "./playbook-app.yml"
     }
   ]
 }
